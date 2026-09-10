@@ -8,9 +8,10 @@ void main()
 
 	for (int i = 1; i < 7; i++)
 	{
-		if (a[i] > max)
+		if (a[i] >= max)
 		{
 			max = a[i];
+			printf("Max Index = %d \n", i);
 		}
 	}
 			
