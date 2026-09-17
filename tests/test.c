@@ -1,30 +1,12 @@
 #include <stdio.h>
 
-float GetSum(int* data, int count)
-{
-	float sum = 0;
-	for (int i = 0; i < count;i++)
-	{
-		sum += data[i];
-	}
-	return sum;
-}
-float GetAvg(int* data, int count)
-{
-	return GetSum(data, count) / count;	
-}
 void main() 
 {
-	printf("Input Target Value = ");
-	int targetValue = -1;
-	int targetIndex = -1;
-	int targetCount = 0;
-	scanf_s("%d", &targetValue);
-	printf("Target = %d\n", targetValue);
-
 	int a[10] = { 5,8,3,9,2,8,7,1,8,6};
 	int maxValue = -1;
-	int maxIndex = -1;	
+	int maxIndex = -1;
+	int secondMax = -1;
+	int secondMaxIndex = -1;
 	for(int i =0; i < 10; i++)
 	{
 		if (a[i] > maxValue)
@@ -32,21 +14,15 @@ void main()
 			maxValue = a[i];
 			maxIndex = i;
 		}
-		if(a[i] == targetValue)
+		else if (a[i] > secondMax && a[i] < maxValue) 
 		{
-			targetCount++;
-			if (targetIndex == -1) 
-			{
-				targetIndex = i;
-			}
+			secondMax = a[i];
+			secondMaxIndex = i;
 		}
-	}
 	
-	printf("targetCount = %d  targetIndex = %d \n", targetCount, targetIndex);
+	}
 	printf("Max Value = %d  Max Index = %d", maxValue, maxIndex);
 	printf("\n");
-	printf("Sum = %f", GetSum(a,10));
-	printf("\n");
-	printf("avg = %.2f", GetAvg(a, 10));
+	printf("secondMax = %d  secondMax Index = %d", secondMax, secondMaxIndex);
 }
 
