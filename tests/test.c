@@ -35,7 +35,10 @@ void main()
 		if(a[i] == targetValue)
 		{
 			targetCount++;
-			targetIndex = i;
+			if (targetIndex == -1) 
+			{
+				targetIndex = i;
+			}
 		}
 	}
 	
