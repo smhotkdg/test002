@@ -1,22 +1,25 @@
 #include <stdio.h>
 
-void swap();
+
 void main() 
 {
-    int a = 10;
-    int b = 20;
-    printf("a = %d, b = %d\n", a, b);
-    //a = 10, b = 20
-    swap(&a,&b);
-    printf("a = %d, b = %d\n", a, b);
-    //a = 20, b = 10
+	int arr[] = { 3,4,4,7,9,2,5,6,8,8,1,2 };
+	int count = 1;
+	int maxCount = 1;
+	for (int i = 1; i < 12; i++)
+	{
+		if (arr[i] > arr[i - 1])
+		{
+			count++;
+ 		}
+		else 
+		{
+			count = 1;
+		}
+		if (count > maxCount)
+		{
+			maxCount = count;
+		}
+	}
+	printf("%d\n", maxCount);
 }
-
-void swap(int *input_a,int *input_b) 
-{
-    int temp;
-    temp = *input_b;
-    *input_b = *input_a;
-    *input_a = temp;
-}
-
