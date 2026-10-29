@@ -1,35 +1,45 @@
 #include <stdio.h>
-
-int FindNumber(int *arr,int number)
+#include <stdlib.h>
+int FindNumber(int *arr,int number,int arrsize)
 {	
-	int pos = -1;
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < arrsize; i++)
 	{
 		if (arr[i] == number)
 		{
-			pos = i;
-			break;
+			return i;
 		}
 	}
-	return pos;
+	return -1;
+}
+int MakeSixNumber(int *arr)
+{
+	
+
+	int index = 0;
+	while (index < 6)
+	{
+		int number = rand() % 45 + 1;
+		int pos = FindNumber(arr, number, 6);
+		if (pos == -1)
+		{
+			arr[index] = number;
+			index++;
+		}
+	}
+	return arr;
 }
 void main() 
 {
-	int arr[8] = { 7, 3, 9, 1, 5, 8, 2, 6 };
-	
-	for (int k = 0; k < 5; k++)
+	int answer[6] = { 8,14,21,22,42,45 };
+	int arr[6] = { -1,-1,-1,-1,-1,-1 };
+	for (int i = 0; i < 1000; i++)
 	{
-		int number = 0;
-		scanf_s("%d", &number);
-		int pos = FindNumber(arr, number);
-		if(pos == -1)
+		MakeSixNumber(arr);
+		for (int i = 0;i < 6;i++)
 		{
-			printf("X\n");
+			printf("number = %d\n", arr[i]);
 		}
-		else
-		{
-			printf("pos = %d\n",pos);
-		}
+		printf("\n\n");
 	}
 	
 }
